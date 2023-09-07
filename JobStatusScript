@@ -1,0 +1,14 @@
+import requests
+
+def get_job_status():
+    url = 'http://controlm_server:port/ctmrest/v1/<domain>/jobs/<jobID>'
+    headers = {'Authorization': 'Basic base64_encoded_credentials'}
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        print(f"Job Status: {response.json()['status']}")
+    else:
+        print(f"Error getting job status: {response.text}")
+
+if __name__ == "__main__":
+    get_job_status()
